@@ -1,21 +1,17 @@
 import praw
 import os
-from dotenv import load_dotenv
 import re
 import google.generativeai as genai
 import time
 
-# Load environment variables
-load_dotenv()
-
-# Initialize Reddit API
+# Initialize Reddit API with secrets from GitHub
 reddit = praw.Reddit(
     client_id=os.getenv("REDDIT_CLIENT_ID"),
     client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
     user_agent=os.getenv("REDDIT_USER_AGENT")
 )
 
-# Configure Gemini API
+# Configure Gemini API with secret from GitHub
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def get_user_data(username):
@@ -133,8 +129,7 @@ def main():
     """Main function to process Reddit user persona."""
     urls = [
         "https://www.reddit.com/user/kojied/",
-        "https://www.reddit.com/user/Hungry-Move-6603/",
-        "https://www.reddit.com/user/mrinank67/",
+        "https://www.reddit.com/user/Hungry-Move-6603/"
     ]
     
     for url in urls:
